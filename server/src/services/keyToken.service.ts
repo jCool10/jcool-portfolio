@@ -16,12 +16,15 @@ class KeyTokenService {
     return tokens.publicKey
   }
 
-  static findByUserId = async (userId: Types.ObjectId) => {
-    return await KeyTokenModel.findOne({ user: new Types.ObjectId(userId) })
-  }
+  static findByUserId = async (userId: Types.ObjectId): Promise<any> =>
+    await KeyTokenModel.findOne({ user: new Types.ObjectId(userId) })
 
   static removeKeyById = async (id: string) => {
-    return await KeyTokenModel.remove(id)
+    return await KeyTokenModel.findOneAndDelete({ _id: id })
+  }
+
+  static deleteKeyById = async (userId: string) => {
+    return await KeyTokenModel.findByIdAndDelete({ userId: userId })
   }
 }
 

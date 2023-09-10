@@ -4,4 +4,4 @@ const findUserByEmail = async (email: string) => await UserModel.findOne({ email
 
 const createNewUser = async (payload: any) => UserModel.create(payload)
 
-export { findUserByEmail, createNewUser }
+export { createNewUser, findUserByEmail }

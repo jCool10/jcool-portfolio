@@ -7,7 +7,7 @@ export interface IKeyToken {
   user: Schema.Types.ObjectId
   publicKey: string
   privateKey: string
-  refreshTokensUsed: Schema.Types.Array
+  refreshTokensUsed: string[]
   refreshToken: string
 }
 
@@ -26,10 +26,7 @@ const keyTokenSchema: Schema<IKeyToken> = new Schema(
       type: String,
       trim: true
     },
-    refreshTokensUsed: {
-      type: Array,
-      default: []
-    },
+    refreshTokensUsed: [String],
     refreshToken: {
       type: String,
       required: true

@@ -4,7 +4,7 @@ interface Props {
 
 const TitlePage = ({ title }: Props) => {
   return (
-    <div className="relative mb-[2.3125rem] before:content-[''] before:h-[0.3125rem] before:absolute before:bottom-[-1.0625rem] before:w-10 before:z-[1] before:rounded-lg before:left-0 before:bg-white text-[2rem] text-[color:var(--color-heading)] font-semibold leading-[1.3] ">
+    <div className="relative mb-[2.3125rem]  text-[2rem] text-[#0B0909] font-semibold leading-[1.3]  overflow-hidden after:content-[''] after:inline-block after:absolute after:w-1/4 after:h-1 after:bg-gradient-line after:ml-[5px] after:bottom-3">
       {title}
     </div>
   )

@@ -35,22 +35,22 @@ const Header = () => {
       </div>
 
       <div className='space-x-6'>
-        <Button onClick={() => setOpen(true)} size='medium' variant='contained' endIcon={<LoginIcon />}>
+        {/* <Button onClick={() => setOpen(true)} size='medium' variant='contained' endIcon={<LoginIcon />}>
           Login
         </Button>
         <Button onClick={() => setOpen(true)} size='medium' variant='contained' endIcon={<PersonAddAltIcon />}>
           Register
-        </Button>
+        </Button> */}
       </div>
 
-      <Modal
+      {/* <Modal
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
         <Box sx={style}></Box>
-      </Modal>
+      </Modal> */}
     </div>
   )
 }

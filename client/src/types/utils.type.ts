@@ -18,3 +18,9 @@ export interface SkillType {
   title: string
   image: string
 }
+
+export interface ContactType {
+  email: string
+  name: string
+  message: string
+}

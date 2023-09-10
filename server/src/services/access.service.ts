@@ -107,9 +107,44 @@ class AccessService {
     }
   }
 
-  static logout = async ({ _id }: { _id: string }) => {
-    return {}
+  static logout = async ({ keyStore }: { keyStore: any }) => {
+    console.log(keyStore)
+    const delKey = KeyTokenService.removeKeyById(keyStore._id)
+    console.log(delKey)
+    return {
+      delKey
+    }
   }
+
+  // static refreshToken = async ({ keyStore, refreshToken, user }: IRefreshToken) => {
+  //   const { userId, email } = user
+  //   console.log({ userId, email })
+
+  //   if (keyStore.refreshTokensUsed.includes(refreshToken)) {
+  //     await KeyTokenService.deleteKeyById(userId)
+  //     throw new ForbiddenError('Forbidden Error')
+  //   }
+
+  //   if (refreshToken !== keyStore.refreshToken) throw new AuthFailureError('User not registered')
+
+  //   const foundUser = await findUserByEmail(email)
+  //   if (!foundUser) throw new AuthFailureError('User not registered')
+
+  //   const publicKeyObject = await crypto.createPublicKey(keyStore.publicKey)
+
+  //   const tokens = await createTokenPair({ userId, email }, publicKeyObject, keyStore.privateKey)
+
+  //   // await keyStore.update({
+  //   //   $set: {
+  //   //     refreshToken: tokens.refreshToken
+  //   //   },
+  //   //   $addToSet: {
+  //   //     refreshTokensUsed: refreshToken
+  //   //   }
+  //   // })
+
+  //   return {}
+  // }
 }
 
 export default AccessService

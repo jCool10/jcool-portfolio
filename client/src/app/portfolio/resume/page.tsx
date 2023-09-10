@@ -6,8 +6,11 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
 import SchoolIcon from '@mui/icons-material/School'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import { SiCplusplus, SiFigma } from '@icons-pack/react-simple-icons'
+
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
+import Link from 'next/link'
 
 function Resume() {
   return (
@@ -17,26 +20,47 @@ function Resume() {
       <List
         subheader={
           <h2 className='flex items-center mb-4 text-2xl font-semibold'>
-            <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-slate-600 rounded-xl '>
-              <ManageAccountsIcon fontSize='large' />
+            <span className='inline-flex items-center justify-center w-12 h-12 mr-4 shadow-40 bg-white/20 rounded-xl '>
+              <ManageAccountsIcon color='primary' fontSize='large' />
             </span>
             Skills
           </h2>
         }
       >
-        <ListItem className='w-full p-6 shadow-50 bg-white/20 rounded-2xl' alignItems='flex-start'>
-          <List subheader={<h2 className='flex items-center mb-2 text-2xl font-medium'>Languages</h2>}>
-            <ListItem>
-              {SkillsData.languages.map((item, index) => (
-                <SkillCard key={index} {...item} />
-              ))}
-            </ListItem>
-          </List>
+        <ListItem className='flex flex-col pt-6 my-2 shadow-50 bg-white/20 rounded-2xl' alignItems='flex-start'>
+          <h2 className='mb-2 text-2xl font-medium '>Languages</h2>
+          <div className='grid w-full grid-cols-3 lg:grid-cols-5'>
+            {SkillsData.languages.map((item, index) => (
+              <SkillCard key={index} {...item} />
+            ))}
+          </div>
+        </ListItem>
 
-          <img
-            src='https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white'
-            alt='html5 '
-          />
+        <ListItem className='flex flex-col pt-6 my-2 shadow-50 bg-white/20 rounded-2xl' alignItems='flex-start'>
+          <h2 className='mb-2 text-2xl font-medium'>Front-end</h2>
+          <div className='grid w-full grid-cols-3 lg:grid-cols-5 '>
+            {SkillsData.webDevelopment.map((item, index) => (
+              <SkillCard key={index} {...item} />
+            ))}
+          </div>
+        </ListItem>
+
+        <ListItem className='flex flex-col pt-6 my-2 shadow-50 bg-white/20 rounded-2xl' alignItems='flex-start'>
+          <h2 className='mb-2 text-2xl font-medium'>Back-end</h2>
+          <div className='grid w-full grid-cols-3 lg:grid-cols-5'>
+            {SkillsData.backend.map((item, index) => (
+              <SkillCard key={index} {...item} />
+            ))}
+          </div>
+        </ListItem>
+
+        <ListItem className='flex flex-col pt-6 my-2 shadow-50 bg-white/20 rounded-2xl' alignItems='flex-start'>
+          <h2 className='mb-2 text-2xl font-medium'>Tools</h2>
+          <div className='grid w-full grid-cols-3 lg:grid-cols-5'>
+            {SkillsData.tools.map((item, index) => (
+              <SkillCard key={index} {...item} />
+            ))}
+          </div>
         </ListItem>
       </List>
 
@@ -45,7 +69,7 @@ function Resume() {
           className='relative col-span-1'
           subheader={
             <h2 className='flex items-center text-2xl font-semibold '>
-              <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-slate-600 rounded-xl '>
+              <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-white/20 rounded-xl '>
                 <SchoolIcon fontSize='large' />
               </span>
               Education
@@ -63,7 +87,7 @@ function Resume() {
           className='col-span-1'
           subheader={
             <h2 className='flex items-center text-2xl font-semibold '>
-              <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-slate-600 rounded-xl '>
+              <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-white/20 rounded-xl '>
                 <BusinessCenterIcon fontSize='large' />
               </span>
               Activities
@@ -71,9 +95,22 @@ function Resume() {
           }
         >
           <ListItem className="ml-6 inline-flex items-start flex-col border-l-2 before:bg-black before:content-[''] before:absolute before:left-[-0.3125rem] before:h-[0.5625rem] before:w-[0.5625rem] before:rounded-[50%] before:top-[17px] ">
+            <h3 className='text-black/60'>3/2023 - now</h3>
+            <h1 className='text-lg font-semibold'>Front-end Developer</h1>
+            <Link href='https://www.facebook.com/MLOpsVN' target='_blank' className='text-base font-medium'>
+              MLOpsVN
+            </Link>
+          </ListItem>
+          <ListItem className="ml-6 inline-flex items-start flex-col border-l-2 before:bg-black before:content-[''] before:absolute before:left-[-0.3125rem] before:h-[0.5625rem] before:w-[0.5625rem] before:rounded-[50%] before:top-[17px] ">
             <h3 className='text-black/60'>10/2022 - now</h3>
             <h1 className='text-lg font-semibold'>Leader of Web/App and Algorithm</h1>
-            <h2 className='text-base font-medium'>Pioneer Club</h2>
+            <Link
+              href='https://www.facebook.com/CLBSVNCKHPioneerKhoaDTVT'
+              target='_blank'
+              className='text-base font-medium'
+            >
+              Pioneer Club
+            </Link>
           </ListItem>
         </List>
       </div>

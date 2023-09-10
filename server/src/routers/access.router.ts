@@ -11,6 +11,7 @@ router.post('/login', asyncHandler(AccessController.login))
 
 router.use(authentication)
 
-router.post('/login', asyncHandler(AccessController.logout))
+router.post('/logout', asyncHandler(AccessController.logout))
+// router.post('/refresh-token', asyncHandler(AccessController.refreshToken))
 
 export default router

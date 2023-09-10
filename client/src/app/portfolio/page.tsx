@@ -1,3 +1,5 @@
+'use client'
+
 import TitlePage from '@/components/shared/TitlePage'
 
 import { ServicesData } from '@/constants/data'
@@ -24,14 +26,20 @@ const Home = () => {
     <div>
       <div className='pb-4'>
         <TitlePage title='About me' />
-        <p>Mình là Lộc.</p>
-        <p>
-          Hiện đang là sinh viên năm 2, ngành Kỹ Thuật Máy Tính (Computer Engineering), khoa Điện tử - Viễn thông,
-          Trường Đại học Bách Khoa, Đại học Đà Nẵng.
-        </p>
+        <div className='flex flex-col gap-2 text-base font-normal'>
+          <p>Hello there!</p>
+          <p>
+            I&apos;m thrilled to welcome you to my portfolio. I am a passionate individual on a journey towards a career
+            in web development. Currently, I am a fourth-year student majoring in Computer Engineering at the
+            university. Throughout my academic journey and hands-on experiences during my time at university, I have
+            accumulated a diverse knowledge of programming, interface design, and web application development. I am in a
+            constant pursuit of enhancing my skills and staying abreast of emerging trends in the industry.
+          </p>
+          <p>Thank you for visiting, and I&apos;m excited to show you my work and progress.</p>
+        </div>
       </div>
 
-      <List
+      {/* <List
         subheader={
           <h2 className='flex items-center text-2xl font-semibold'>
             <span className='inline-flex items-center justify-center w-12 h-12 mr-4 bg-slate-600 rounded-xl '>
@@ -52,7 +60,7 @@ const Home = () => {
             growth in a professional and collaborative environment.
           </ListItemText>
         </ListItem>
-      </List>
+      </List> */}
 
       <h2 className='flex items-center text-2xl font-semibold'>What I am doing</h2>
       <List className='grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-2'>

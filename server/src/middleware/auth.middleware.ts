@@ -1,11 +1,11 @@
-import { NextFunction, Request } from 'express'
+import { RequestAuthentication, NextFunction } from 'express'
 import JWT from 'jsonwebtoken'
 import { AuthFailureError, ForbiddenError, NotFoundError } from '~/core/error.response'
 import asyncCatch from '~/helpers/cathAsync'
 import { IKeyToken } from '~/models/keytoken.model'
 import KeyTokenService from '~/services/keyToken.service'
+
 const HEADER = {
-  API_KEY: 'x-api-key',
   AUTHORIZATION: 'authorization',
   REFRESH_TOKEN: 'refresh-token',
   X_CLIENT_ID: 'x-client-id',
@@ -13,15 +13,17 @@ const HEADER = {
 }
 
 declare module 'express' {
-  interface Request {
-    user?: JWT.JwtPayload // Replace with the appropriate type for your DecodedToken
-    keyStore?: IKeyToken // Replace with the type for your KeyStore object
-    refreshToken?: string
+  export interface RequestAuthentication extends Request {
+    user?: JWT.JwtPayload
+    keyStore: IKeyToken
+    refreshToken: string
   }
 }
 
-const authentication = asyncCatch(async (req: Request, res: Response, next: NextFunction) => {
-  const clientId = req.headers[HEADER.X_CLIENT_ID] as string
+// interface Request
+
+const authentication = asyncCatch(async (req: RequestAuthentication, res: Response, next: NextFunction) => {
+  const clientId = req.headers[HEADER.X_CLIENT_ID]
   const refreshToken = req.headers[HEADER.REFRESH_TOKEN] as string
   const accessToken = req.headers[HEADER.AUTHORIZATION] as string
 
@@ -58,7 +60,7 @@ const authentication = asyncCatch(async (req: Request, res: Response, next: Next
   return next()
 })
 
-const parseJwt = (token: any) => {
+const parseJwt = (token: string) => {
   return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
 }
 

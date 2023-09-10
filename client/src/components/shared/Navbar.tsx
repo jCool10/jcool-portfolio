@@ -3,54 +3,58 @@ import HomeIcon from '@mui/icons-material/Home'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LayersIcon from '@mui/icons-material/Layers'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
-  return (
-    <div className='border border-[color:var(--color-border)] rounded-[0_var(--radius-20)_0_var(--radius-20)] flex items-center justify-end h-[4.375rem] absolute z-[1] px-[2.375rem] py-0 border-solid right-0 top-0 bg-[#1e1e1f]'>
-      <ul className='relative flex items-center justify-center h-full'>
-        <li className='w-[70px] h-[70px] z-[1] mr-8'>
-          <a
-            href='/portfolio'
-            className='relative flex justify-center items-center flex-col w-full text-center font-[normal]'
-          >
-            <span className='block leading-[60px] text-2xl text-center text-white transition-[0.5s]'>
-              <HomeIcon fontSize='large' />
-            </span>
-          </a>
-        </li>
+  const pathname = usePathname()
 
-        <li className='w-[70px] h-[70px] z-[1] mr-8'>
-          <a
-            href='/portfolio/resume'
-            className='relative flex justify-center items-center flex-col w-full text-center font-[normal]'
-          >
-            <span className='block leading-[60px] text-2xl text-center text-white transition-[0.5s]'>
-              <AccountCircleIcon fontSize='large' />
-            </span>
-          </a>
-        </li>
-        <li className='w-[70px] h-[70px] z-[1] mr-8'>
-          <a
-            href='/portfolio/project'
-            className='relative flex justify-center items-center flex-col w-full text-center font-[normal]'
-          >
-            <span className='block leading-[60px] text-2xl text-center text-white transition-[0.5s]'>
-              <LayersIcon fontSize='large' />
-            </span>
-          </a>
-        </li>
-        <li className='w-[70px] h-[70px] z-[1] mr-8'>
-          <a
-            href='/portfolio/contact'
-            className='relative flex justify-center items-center flex-col w-full text-center font-[normal]'
-          >
-            <span className='block leading-[60px] text-2xl text-center text-white transition-[0.5s]'>
-              <ContactPageIcon fontSize='large' />
-            </span>
-          </a>
-        </li>
-      </ul>
-    </div>
+  const [value, setValue] = React.useState(pathname)
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue)
+  }
+
+  return (
+    <BottomNavigation
+      className='rounded-[var(--radius-20)_var(--radius-20)_0_0] shadow-[var(--box-shadow-30)] flex items-center justify-center fixed h-[3.8125rem] w-full z-[1112]  right-0 bottom-0 lg:w-[500px] lg:rounded-[0_var(--radius-20)_0_var(--radius-20)] lg:h-[4.375rem] lg:absolute lg:z-10 lg:px-[2.375rem] lg:py-0 lg:right-0 lg:top-0  '
+      value={value}
+      onChange={handleChange}
+    >
+      <BottomNavigationAction
+        href='/portfolio'
+        LinkComponent={Link}
+        label='Home'
+        value='/portfolio'
+        icon={<HomeIcon fontSize='large' />}
+      />
+
+      <BottomNavigationAction
+        href='/portfolio/resume'
+        LinkComponent={Link}
+        label='Resume'
+        value='/portfolio/resume'
+        icon={<AccountCircleIcon fontSize='large' />}
+      />
+
+      <BottomNavigationAction
+        href='/portfolio/project'
+        LinkComponent={Link}
+        label='Project'
+        value='/portfolio/project'
+        icon={<LayersIcon fontSize='large' />}
+      />
+
+      <BottomNavigationAction
+        href='/portfolio/contact'
+        LinkComponent={Link}
+        label='Contact'
+        value='/portfolio/contact'
+        icon={<ContactPageIcon fontSize='large' />}
+      />
+    </BottomNavigation>
   )
 }
 

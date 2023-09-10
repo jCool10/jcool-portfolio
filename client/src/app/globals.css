@@ -47,3 +47,7 @@ html {
   --radius-12: 12px;
   --radius-8: 8px;
 }
+
+.title-right {
+  @apply text-white relative overflow-hidden after:content-[''] after:inline-block after:absolute after:w-full after:h-px after:bg-current after:ml-[5px] after:bottom-1;
+}

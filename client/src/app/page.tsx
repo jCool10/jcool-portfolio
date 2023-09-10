@@ -4,7 +4,7 @@ import MenuCard from '@/components/card/MenuCard'
 
 export default function Home() {
   return (
-    <div className='flex w-full h-[600px] justify-between '>
+    <div className='flex flex-col justify-between w-full lg:flex-row '>
       <div className='flex flex-col justify-between p-10'>
         <div className='flex w-full h-[120px] text-[3.5rem] font-bold leading-none text-white my-10'>
           <h1 className='flex flex-col justify-end h-full border-b-12'>MY LAN</h1>
@@ -17,7 +17,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='items-center justify-center w-[30%]'>
+      <div className='items-center justify-center lg:w-[30%] w-full lg:h-[500px] h-[400px]'>
         <iframe
           title='Hero'
           className='w-full h-full'
